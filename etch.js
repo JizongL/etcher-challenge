@@ -1,11 +1,18 @@
 // Add Event Listeners here:
-
+'use strict';
 
 // When DOM is ready:
 $(() => {
   createAndPlaceRows(8);
-
+  $('.row').on('click','.cell',function(){
+    $(this).addClass('active');
+    //console.log('firing grid');
+    $('.controls button').on('click',function(event){
+      createAndPlaceRows(8);
+    })
+  });
   // Bind your event listeners here:
+
 });
 
 
