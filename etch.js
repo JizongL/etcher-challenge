@@ -3,16 +3,27 @@
 
 // When DOM is ready:
 $(() => {
+  // draw grid 
   createAndPlaceRows(8);
-  $('.row').on('click','.cell',function(){
+  // Bind your event listeners here:
+  // etchering, when mouse is over a grid, it will trigger the grid active. 
+  // used event delegation.
+  $('.row').on('mouseover','.cell',function(){
     $(this).addClass('active');
     //console.log('firing grid');
-    $('.controls button').on('click',function(event){
-      createAndPlaceRows(8);
-    })
+   
   });
-  // Bind your event listeners here:
-
+  // listener for reset button.
+  $('.controls button').on('click',function(event){
+    // when button is pushed, redraw grids
+    createAndPlaceRows(8);
+    // then reapply the mouse over function above. 
+    $('.row').on('mouseover','.cell',function(){
+      $(this).addClass('active');
+      
+     
+    });
+  });
 });
 
 
